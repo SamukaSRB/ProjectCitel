@@ -259,10 +259,32 @@ section.topo-do-site .flex {
     background-color: #eeeeee75;
 }
 
+.input-box select {
+    margin: 1.9rem 1rem;
+    padding: 0.8rem 1.3rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+    font-size: 0.8rem;
+}
+
+.input-box select:hover {
+    background-color: #eeeeee75;
+}
+
+
 .input-box input:focus-visible {
     outline: 1px solid #4682B4;
 }
 .input-box input::placeholder {
+    color: #000000be;
+}
+
+.input-box select:focus-visible {
+    outline: 1px solid #4682B4;
+}
+
+.input-box select::placeholder {
     color: #000000be;
 }
 
