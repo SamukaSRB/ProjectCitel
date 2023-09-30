@@ -85,8 +85,48 @@ header nav .menu-btn i {
     transition: .2s;
 }
 
-.container .search{
-    margin-topo:82px;
+/*Searc*/
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.searchTerm {
+    width: 100%;
+    border: 3px solid #4682B4;
+    border-right: none;
+    padding: 10px;
+    height: 39px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #4682B4;
+}
+
+.searchTerm:focus {
+    color: #00B4CC;
+}
+
+.searchButton {
+    width: 40px;
+    height: 38px;
+    border: 1px solid #4682B4;
+    background: #4682B4;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap {
+    width: 30%;
+    position: absolute;
+    top: 17%;
+    left: 82%;
+    transform: translate(-50%, -50%);
+   
 }
 
 /* ESTILO DO TOPO DO SITE */

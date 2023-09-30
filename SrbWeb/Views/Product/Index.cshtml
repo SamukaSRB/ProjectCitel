@@ -5,14 +5,20 @@
 }
 
 
-<div class="search">
-@using (Html.BeginForm("Search", "Product", FormMethod.Get))
+ @using (Html.BeginForm("Search", "Product", FormMethod.Get))
 {
-    @Html.Label("ProductName", "Nome do Produto")
-    <input  type="text" name="ProductName" />
-    <input class="btn-search" type="submit" name="submit" value="Produto" />
-}
-</div>
+    <div class="wrap">
+        <div class="search">
+            @Html.Label("ProductName", "")
+            <input type="text" class="searchTerm" name="ProductName" placeholder="Localizar:">
+            <button type="submit" class="searchButton" name="submit" value="Produto">
+                <i class="fa fa-search"></i>
+            </button>
+      
+        </div>
+    </div>
+   }
+ 
 <p>
     <a asp-action="Create">Adicionar Produto</a>
 </p>
