@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - SrbWeb</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    
+    </head>
+    <body>
+        <header>         
+           <nav>
+                <div class="logo">
+                    <a href="#">
+                        <img src="~/img/logo.png" alt="SRB">
+                    </a>
+                </div>
+                <div class="menu-btn">
+                    <i class="fa fa-bars fa-2x" onclick="menuShow()"></i>
+                </div>
+
+                <ul>
+                    <li> <a asp-area="" asp-controller="Home" asp-action="Index">Home</a> </li>
+                    <li> <a asp-area="" asp-controller="Product" asp-action="Index">Produtos</a> </li>
+                    <li> <a asp-area="" asp-controller="Category" asp-action="Index">Categorias</a> </li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Sobre">Sobre</a> </li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> </li>   
+                </ul>
+
+                <div class="btn-contato">
+                    <a href="#contato">
+                        <button>Contato</button>
+                    </a>
+                </div>
+            </nav>
+
+        </header>
+        <div class="container">
+               <main>  
+                       @{
+                            var errorMessage = TempData["errorMessage"]?.ToString();
+                            var successMessage = TempData["successMessage"]?.ToString();
+                        }
+                        @if (!string.IsNullOrWhiteSpace(@successMessage))
+                        {
+                            <div class="alert alert-success">
+                                <b>Success : </b>@successMessage
+                                <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        }
+                        else if (!string.IsNullOrWhiteSpace(errorMessage))
+                        {
+                            <div class="alert alert-danger">
+                                <b>Error : </b>@successMessage
+                                <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>                
+                        }                        
+                      
+                    @RenderBody()
+                </main>
+         </div>
+
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Samuka SRB</p>
+        </footer>
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/alert.js"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+
+    </body>
+</html>
