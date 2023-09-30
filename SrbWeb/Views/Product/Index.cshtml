@@ -63,10 +63,13 @@
                     @Html.DisplayFor(modelItem => item.CategoryId)
                 </td>
                 <td>
-                        @Html.ActionLink("Alterar", "Edit", new { ProductId=item.ProductId }) 
+                    <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-primary">Alterar</a> 
+                    <a asp-action="Details" asp-route-id="@item.ProductId" class="btn btn-success">Detalhes</a> 
+                    <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-danger">Eliminar</a>
+                 @*   @Html.ActionLink("Alterar", "Edit", new { ProductId=item.ProductId }) 
                         @Html.ActionLink("Detalhes", "Details", new { ProductId=item.ProductId }) 
                         @Html.ActionLink("Deletar", "Delete", new { ProductId=item.ProductId },
-                        new { onclick = "return confirm('Deseja realmente deletar este produto ?');" })
+                        new { onclick = "return confirm('Deseja realmente deletar este produto ?');" })*@
                 </td>
             </tr>
             }

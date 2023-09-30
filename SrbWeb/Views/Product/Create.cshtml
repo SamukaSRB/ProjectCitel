@@ -48,9 +48,10 @@
                         <input asp-for="DatePurchase" class=" form-control" />
                         <span asp-validation-for="DatePurchase" class="text-danger"></span>
                     </div>
-                    <div class="input-box">
-                        <label asp-for="CategoryId" class="control-label"></label>
-                        <input asp-for="CategoryId" class="form-control" />
+                    <div class="input-box">                       
+                        <select asp-for="CategoryId"  asp-items="ViewBag.Categories">
+                            <option>--Selecione--</option>
+                        </select>
                         <span asp-validation-for="CategoryId" class="text-danger"></span>
                     </div>
                 </div>

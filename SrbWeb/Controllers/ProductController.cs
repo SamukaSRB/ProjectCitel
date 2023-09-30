@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using SrbWeb.Models;
 using System.Linq.Expressions;
@@ -55,6 +56,7 @@ namespace SrbWeb.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            LoadCategories();
             return View();
         }
 
@@ -84,6 +86,8 @@ namespace SrbWeb.Controllers
         [HttpGet]
         public IActionResult Edit(int ProductId)
         {
+            LoadCategories();
+
             try
             {
                 Product product = new Product();
@@ -170,7 +174,27 @@ namespace SrbWeb.Controllers
             }
 
         }
-               
+
+        [NonAction]
+        public IActionResult LoadCategories()
+        {
+            List<Category> categorylist = new List<Category>();
+            HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "/Category").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                categorylist = JsonConvert.DeserializeObject<List<Category>>(data);
+                ViewBag.Categories = new MultiSelectList(categorylist,"CategoryId","CategoryName");
+            }
+            return View();
+
+         
+
+
+
+        }
+
+
     }
 }
 
