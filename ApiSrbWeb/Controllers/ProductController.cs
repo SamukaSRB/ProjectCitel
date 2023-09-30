@@ -132,7 +132,8 @@ namespace ApiSrbWeb.Controllers
                         ProductPrice = s.ProductPrice,
                         ProductDescription = s.ProductDescription,
                         ProductImageUrl = s.ProductImageUrl,
-                        ProductStock = s.ProductStock
+                        ProductStock = s.ProductStock,
+                        CategoryId = s.CategoryId
 
 
                     }).ToList();
