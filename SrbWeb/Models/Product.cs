@@ -59,13 +59,14 @@ namespace SrbWeb.Models
 
         /// <summary>
         /// Data da aquisição do produto
-        /// </summary> 
+        /// </summary>
+        [DisplayName("Data")]
         public DateTime DatePurchase { get; set; }
 
         /// <summary>
         /// Chave estrangeira de categoria
         /// </summary> 
-        [ForeignKey("CategoryId")]
+        [ForeignKey("Categorias")]
         public int? CategoryId { get; set; }
 
         [JsonIgnore]
