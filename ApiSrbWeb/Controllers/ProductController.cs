@@ -28,7 +28,9 @@ namespace ApiSrbWeb.Controllers
         public async Task<ActionResult<List<Product>>> GetProduct()
         {
             var products = await _context.Products.Include(c => c.Category).ToListAsync();
-            return products;
+            if (products == null)
+                return BadRequest("Não existe produtos entre contato com administrador.");
+            return Ok(products);
         }
 
         /// <summary>
@@ -63,7 +65,7 @@ namespace ApiSrbWeb.Controllers
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
-            return await _context.Products.ToListAsync();
+            return Ok(await _context.Products.ToListAsync());
         }
 
         /// <summary>
@@ -79,15 +81,15 @@ namespace ApiSrbWeb.Controllers
             var dbProduct = await _context.Products.FindAsync(product.ProductId);
 
             if (dbProduct == null)
-                return BadRequest("Product não encontrado");
+                return BadRequest("Produto não encontrado");
 
             dbProduct.ProductId = product.ProductId;
             dbProduct.ProductEan = product.ProductEan;
+            dbProduct.ProductCod = product.ProductCod;
             dbProduct.ProductName = product.ProductName;
             dbProduct.ProductDescription = product.ProductDescription;
             dbProduct.ProductPrice = product.ProductPrice;
             dbProduct.ProductStock = product.ProductStock;
-            dbProduct.ProductImageUrl = product.ProductImageUrl;
             dbProduct.CategoryId = product.CategoryId;
 
             await _context.SaveChangesAsync();
@@ -128,17 +130,13 @@ namespace ApiSrbWeb.Controllers
                     .Select(s => new Product()
                     {
                         ProductId = s.ProductId,
-                        ProductEan = s.ProductEan,
+                        ProductCod = s.ProductCod,
                         ProductName = s.ProductName,
                         ProductPrice = s.ProductPrice,
                         ProductDescription = s.ProductDescription,
-                        ProductImageUrl = s.ProductImageUrl,
                         ProductStock = s.ProductStock,
                         CategoryId = s.CategoryId,
-                        
-                      
 
-                        
                     }).ToList();
 
             if (products.Count == 0)

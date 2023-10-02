@@ -12,7 +12,7 @@
                 </div>
             </div>
              <div class="input-group">
-                   @* <div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+                   <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="input-box">
                         <label asp-for="ProductId" class="control-label"></label>
                         <input asp-for="ProductId" class="form-control" />
@@ -22,6 +22,11 @@
                         <label asp-for="ProductEan" class="control-label"></label>
                         <input asp-for="ProductEan" class="form-control" />
                         <span asp-validation-for="ProductEan" class="text-danger"></span>
+                    </div>
+                     <div class="input-box">
+                        <label asp-for="ProductCod" class="control-label"></label>
+                        <input asp-for="ProductCod" class="form-control" />
+                        <span asp-validation-for="ProductCod" class="text-danger"></span>
                     </div>
                     <div class="input-box">
                         <label asp-for="ProductName" class="control-label"></label>
@@ -42,11 +47,6 @@
                         <label asp-for="ProductStock" class="control-label"></label>
                         <input asp-for="ProductStock" class="form-control" />
                         <span asp-validation-for="ProductStock" class="text-danger"></span>
-                    </div>
-                    <div class="input-box">
-                        <label asp-for="ProductImageUrl" class="control-label"></label>
-                        <input asp-for="ProductImageUrl" class="form-control" />
-                        <span asp-validation-for="ProductImageUrl" class="text-danger"></span>
                     </div>
                     <div class="input-box">
                         <label asp-for="DatePurchase" class="control-label"></label>

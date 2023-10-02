@@ -37,14 +37,14 @@ namespace ApiSrbWeb.Repository
         public async Task<ActionResult<List<Product>>> UpdateProduct(Product product)
         {
             var dbProduct = await _context.Products.FindAsync(product.ProductId);
-           
+
             dbProduct.ProductId = product.ProductId;
             dbProduct.ProductEan = product.ProductEan;
+            dbProduct.ProductCod = product.ProductCod;
             dbProduct.ProductName = product.ProductName;
             dbProduct.ProductDescription = product.ProductDescription;
             dbProduct.ProductPrice = product.ProductPrice;
             dbProduct.ProductStock = product.ProductStock;
-            dbProduct.ProductImageUrl = product.ProductImageUrl;
             dbProduct.CategoryId = product.CategoryId;
 
             await _context.SaveChangesAsync();
@@ -67,17 +67,16 @@ namespace ApiSrbWeb.Repository
                     .Select(s => new Product()
                     {
                         ProductId = s.ProductId,
-                        ProductEan = s.ProductEan,
+                        ProductCod = s.ProductCod,
                         ProductName = s.ProductName,
                         ProductPrice = s.ProductPrice,
                         ProductDescription = s.ProductDescription,
-                        ProductImageUrl = s.ProductImageUrl,
                         ProductStock = s.ProductStock
 
                     }).ToList();
-            
-            return products;             
+
+            return products;
         }
 
-    }  
+    }
 }

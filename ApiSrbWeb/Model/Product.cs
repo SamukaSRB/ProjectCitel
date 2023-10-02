@@ -19,15 +19,23 @@ public class Product
     /// </summary>
     [DisplayName("Ean")]
     [Required(ErrorMessage = "Digite o Ean do produto")]
-    [StringLength(13, ErrorMessage ="O Ean deve conter 13 digitos")]
+    [StringLength(13, ErrorMessage = "O Ean deve conter 13 digitos")]
     public string? ProductEan { get; set; }
+
+    /// <summary>
+    /// Ean do produdo (Codigo de produto) [Cod]
+    /// </summary>
+    [DisplayName("Código")]
+    [Required(ErrorMessage = "Digite o código do produto")]
+    [StringLength(20, ErrorMessage = "O código deve conter 20 digitos")]
+    public string? ProductCod { get; set; }
 
     /// <summary>
     /// Nome do produto [ProductName]
     /// </summary>
     [DisplayName("Nome")]
     [Required(ErrorMessage = "Digite o nome do produto")]
-    [MaxLength(50, ErrorMessage = "Quantidade de caracter excedida para o nome")]
+    [StringLength(100, ErrorMessage = "O nome deve conter 100 caracteres")]
     public string? ProductName { get; set; }
 
     /// <summary>
@@ -35,7 +43,7 @@ public class Product
     /// </summary>
     [DisplayName("Descrição")]
     [Required(ErrorMessage = "Digite a descrição do produto")]
-    [MaxLength(2000, ErrorMessage = "Quantidade de caracter excedida para a descrição")]
+    [StringLength(100, ErrorMessage = "Quantidade de caracter excedida para a descrição")]
     public string? ProductDescription { get; set; }
 
     /// <summary>
@@ -49,16 +57,10 @@ public class Product
     /// <summary>
     /// Quantidade de Estoque [ProductStock]
     /// </summary>
-    [DisplayName("Qtd Produto")]
+    [DisplayName("Qtd")]
     [Required(ErrorMessage = "Digite a quantidade de entrada do produto")]
     [Range(0, 9000, ErrorMessage = "Quantidade maxima ultrapassada")]
     public int ProductStock { get; set; }
-
-    /// <summary>
-    /// Endereço de imagem produto
-    /// </summary> 
-    [DisplayName("Foto")]
-    public string? ProductImageUrl { get; set; }
 
     /// <summary>
     /// Data da aquisição do produto
@@ -73,6 +75,6 @@ public class Product
     public int? CategoryId { get; set; }
 
     [JsonIgnore]
-    public Category? Category { get; set; } 
+    public Category? Category { get; set; }
 
 }

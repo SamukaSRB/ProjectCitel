@@ -27,7 +27,7 @@ namespace SrbWeb.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Document()
         {
             return View();
         }     

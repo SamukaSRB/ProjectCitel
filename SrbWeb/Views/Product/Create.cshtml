@@ -4,69 +4,71 @@
     ViewData["Title"] = "Create";
 }
 
-    <div class="form">
-        <form asp-action="Create">
-                <div class="form-header">
-                    <div class="title">
-                        <h1>Cadastrar</h1>
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <div class="input-box">
-                        <label asp-for="ProductEan" class="control-label"></label>
-                        <input asp-for="ProductEan" class="form-control" />
-                        <span asp-validation-for="ProductEan" class="text-danger"></span>
-                    </div>
-                    <div class="input-box">
-                        <label asp-for="ProductName" class="control-label"></label>
-                        <input asp-for="ProductName" class="form-control" />
-                        <span asp-validation-for="ProductName" class="text-danger"></span>
-                    </div>
-                    <div class="input-box">
-                        <label asp-for="ProductDescription" class="control-label"></label>
-                        <input asp-for="ProductDescription" class="form-control" />
-                        <span asp-validation-for="ProductDescription" class="text-danger"></span>
-                    </div>
-                    <div class="input-box">
-                        <label asp-for="ProductPrice" class="control-label"></label>
-                        <input asp-for="ProductPrice" class="form-control" />
-                        <span asp-validation-for="ProductPrice" class="text-danger"></span>
-                    </div>
-                    <div class="input-box">
-                        <label asp-for="ProductStock" class="control-label"></label>
-                        <input asp-for="ProductStock" class="form-control" />
-                        <span asp-validation-for="ProductStock" class="text-danger"></span>
-                    </div>
-                    <div class="input-box">
-                        <label asp-for="ProductImageUrl" class="control-label"></label>
-                        <input asp-for="ProductImageUrl" class="form-control" />
-                        <span asp-validation-for="ProductImageUrl" class="text-danger"></span>
-                    </div>
-                    <div class="input-box">
-                        <label asp-for="DatePurchase" class="control-label"></label>
-                        <input asp-for="DatePurchase" class=" form-control" />
-                        <span asp-validation-for="DatePurchase" class="text-danger"></span>
-                    </div>
-                    <div class="input-box">                       
-                        <select asp-for="CategoryId"  asp-items="ViewBag.Categories">
-                            <option>--Selecione--</option>
-                        </select>
-                        <span asp-validation-for="CategoryId" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="continue-button">
-                    <input type="submit" value="Cadastrar" class="btn btn-primary" />
-                </div>
-        </form>
-
-        <div class="continue-button">
-            <a asp-action="Index">Voltar</a>
+<div class="form">
+    <form asp-action="Create">
+        <div class="form-header">
+            <div class="title">
+                <h1>Cadastrar</h1>
+            </div>
         </div>
+
+        <div class="input-group">
+            <div class="input-box">
+                <label asp-for="ProductEan" class="control-label"></label>
+                <input asp-for="ProductEan" class="form-control" />
+                <span asp-validation-for="ProductEan" class="text-danger"></span>
+            </div>
+            <div class="input-box">
+                <label asp-for="ProductCod" class="control-label"></label>
+                <input asp-for="ProductCod" class="form-control" />
+                <span asp-validation-for="ProductCod" class="text-danger"></span>
+            </div>
+            <div class="input-box">
+                <label asp-for="ProductName" class="control-label"></label>
+                <input asp-for="ProductName" class="form-control" />
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+            </div>
+            <div class="input-box">
+                <label asp-for="ProductDescription" class="control-label"></label>
+                <input asp-for="ProductDescription" class="form-control" />
+                <span asp-validation-for="ProductDescription" class="text-danger"></span>
+            </div>
+            <div class="input-box">
+                <label asp-for="ProductPrice" class="control-label"></label>
+                <input asp-for="ProductPrice" class="form-control" />
+                <span asp-validation-for="ProductPrice" class="text-danger"></span>
+            </div>
+            <div class="input-box">
+                <label asp-for="ProductStock" class="control-label"></label>
+                <input asp-for="ProductStock" class="form-control" />
+                <span asp-validation-for="ProductStock" class="text-danger"></span>
+            </div>
+            <div class="input-box">
+                <label asp-for="DatePurchase" class="control-label"></label>
+                <input asp-for="DatePurchase" class=" form-control" />
+                <span asp-validation-for="DatePurchase" class="text-danger"></span>
+            </div>
+            <div class="input-box">
+                <select asp-for="CategoryId" asp-items="ViewBag.Categories">
+                    <option>--Selecione--</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="continue-button">
+            <input type="submit" value="Cadastrar" class="btn btn-primary" />
+        </div>
+    </form>
+
+    <div class="continue-button">
+        <a asp-action="Index">Voltar</a>
     </div>
+</div>
 
 
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

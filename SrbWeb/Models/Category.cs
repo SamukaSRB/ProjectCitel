@@ -5,7 +5,6 @@ namespace SrbWeb.Models
 {
     public class Category
     {
-
         /// <summary>
         /// Identificador único de categoria
         /// </summary> 
@@ -17,6 +16,7 @@ namespace SrbWeb.Models
         /// Nome da categoria [CategoryName]
         /// </summary>
         [Required]
+        [StringLength(20, ErrorMessage = "O nome deve conter 20 digitos")]
         [DisplayName("Nome")]
         public string CategoryName { get; set; }
 
@@ -25,6 +25,7 @@ namespace SrbWeb.Models
         /// </summary>
         [Required]
         [DisplayName("Descrição")]
+        [StringLength(100, ErrorMessage = "A descrição deve conter 100 digitos")]
         public string CategoryDescription { get; set; }
         public ICollection<Product>? Products { get; set; }
     }

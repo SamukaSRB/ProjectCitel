@@ -5,7 +5,7 @@
 }
 
 
- @using (Html.BeginForm("Search", "Product", FormMethod.Get))
+@using (Html.BeginForm("Search", "Product", FormMethod.Get))
 {
     <div class="wrap">
         <div class="search">
@@ -14,41 +14,48 @@
             <button type="submit" class="searchButton" name="submit" value="Produto">
                 <i class="fa fa-search"></i>
             </button>
-      
+
         </div>
     </div>
-   }
- 
+}
+
 <p>
     <a asp-action="Create">Adicionar Produto</a>
 </p>
 
 <table class="table content-table">
-        <thead>
-            <tr>            
-                <th>
-                    @Html.DisplayNameFor(model => model.ProductEan)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProductName)
-                </th>           
-                <th>
-                    @Html.DisplayNameFor(model => model.ProductPrice)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProductStock)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Category)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-    @foreach (var item in Model) {
-            <tr>           
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductEan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.ProductEan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductCod)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ProductName)
@@ -63,21 +70,21 @@
                     @Html.DisplayFor(modelItem => item.Category.CategoryName)
                 </td>
                 <td>
-                   @* <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-primary">Alterar</a> 
-                    <a asp-action="Details" asp-route-id="@item.ProductId" class="btn btn-success">Detalhes</a> 
-                    <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-danger">Eliminar</a>*@
-                        @Html.ActionLink("Alterar", "Edit", new { ProductId=item.ProductId }) ,
-                        @Html.ActionLink("Detalhes", "Details", new { ProductId=item.ProductId }), 
-                        @Html.ActionLink("Deletar", "Delete", new { ProductId=item.ProductId },
-                        new { onclick = "return confirm('Deseja realmente deletar este produto ?');" })
+                    @* <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-primary">Alterar</a>
+                <a asp-action="Details" asp-route-id="@item.ProductId" class="btn btn-success">Detalhes</a>
+                <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-danger">Eliminar</a>*@
+                    @Html.ActionLink("Alterar", "Edit", new { ProductId=item.ProductId }) ,
+                    @Html.ActionLink("Detalhes", "Details", new { ProductId=item.ProductId }),
+                    @Html.ActionLink("Deletar", "Delete", new { ProductId=item.ProductId },
+                new { onclick = "return confirm('Deseja realmente deletar este produto ?');" })
                 </td>
             </tr>
-            }
-            <tr>
-                <td>
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-        </tbody>   
-    </table>
+        }
+        <tr>
+            <td>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+    </tbody>
+</table>
 

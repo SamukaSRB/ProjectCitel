@@ -21,9 +21,9 @@ namespace ApiSrbWeb.Migrations
                 {
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CategoryName = table.Column<string>(type: "longtext", nullable: false)
+                    CategoryName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CategoryDescription = table.Column<string>(type: "longtext", nullable: false)
+                    CategoryDescription = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -38,16 +38,16 @@ namespace ApiSrbWeb.Migrations
                 {
                     ProductId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ProductEan = table.Column<string>(type: "varchar(13)", maxLength: 13, nullable: false)
+                    ProductEan = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    ProductName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
+                    ProductCod = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    ProductDescription = table.Column<string>(type: "varchar(2000)", maxLength: 2000, nullable: false)
+                    ProductName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    ProductPrice = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
-                    ProductStock = table.Column<int>(type: "int", nullable: false),
-                    ProductImageUrl = table.Column<string>(type: "longtext", nullable: true)
+                    ProductDescription = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    ProductPrice = table.Column<decimal>(type: "decimal(14,2)", precision: 14, scale: 2, nullable: false),
+                    ProductStock = table.Column<int>(type: "int", maxLength: 100, nullable: false),
                     DatePurchase = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: true)
                 },
