@@ -20,18 +20,19 @@ namespace SrbWeb.Controllers
             _client = new HttpClient(); 
             _client.BaseAddress = baseAdrress;
         }
-
+        
         [HttpGet]
         public IActionResult Index()
-        {
+        {           
             List<Product> productlist = new List<Product>();
             HttpResponseMessage response = _client.GetAsync(_client.BaseAddress + "/Product").Result;
 
             if (response.IsSuccessStatusCode)
             {
-                string data = response.Content.ReadAsStringAsync().Result;
+                string data = response.Content.ReadAsStringAsync().Result;                
                 productlist = JsonConvert.DeserializeObject<List<Product>>(data);
             }
+            
             return View(productlist);
         }
        
@@ -172,7 +173,6 @@ namespace SrbWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 return View();
             }
-
         }
 
         [NonAction]
@@ -187,14 +187,8 @@ namespace SrbWeb.Controllers
                 ViewBag.Categories = new MultiSelectList(categorylist,"CategoryId","CategoryName");
             }
             return View();
-
-         
-
-
-
         }
-
-
+        
     }
 }
 
