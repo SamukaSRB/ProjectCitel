@@ -3,7 +3,6 @@ using ApiSrbWeb.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace ApiSrbWeb.Controllers
 {
     [Route("api/[controller]")]
@@ -18,18 +17,18 @@ namespace ApiSrbWeb.Controllers
         }
 
         #region Crud
-
         /// <summary>
         /// Busca todos os produtos
         /// </summary>        
         /// <response code="400">Bad Request</response>
         /// <response code="500">Internal Server Error</response>
         /// <response code="200">Ok</response>
+        /// 
         [HttpGet]
         public async Task<ActionResult<List<Product>>> GetProduct()
         {
-            var product = await _context.Products.ToListAsync();
-            return product;
+            var products = await _context.Products.Include(c => c.Category).ToListAsync();
+            return products;
         }
 
         /// <summary>
@@ -42,7 +41,7 @@ namespace ApiSrbWeb.Controllers
         [HttpGet("{ProductId}")]
         public async Task<ActionResult<Product>> GetById(int ProductId)
         {
-            var product = await _context.Products.FindAsync(ProductId);
+            var product = await _context.Products.Include(c => c.Category).FirstOrDefaultAsync(m => m.ProductId == ProductId);
             if (product == null)
                 return BadRequest("Product não encontrado.");
             return Ok(product);
@@ -78,8 +77,10 @@ namespace ApiSrbWeb.Controllers
         public async Task<ActionResult<List<Product>>> UpdateProduct(Product product)
         {
             var dbProduct = await _context.Products.FindAsync(product.ProductId);
+
             if (dbProduct == null)
                 return BadRequest("Product não encontrado");
+
             dbProduct.ProductId = product.ProductId;
             dbProduct.ProductEan = product.ProductEan;
             dbProduct.ProductName = product.ProductName;
@@ -133,9 +134,11 @@ namespace ApiSrbWeb.Controllers
                         ProductDescription = s.ProductDescription,
                         ProductImageUrl = s.ProductImageUrl,
                         ProductStock = s.ProductStock,
-                        CategoryId = s.CategoryId
+                        CategoryId = s.CategoryId,
+                        
+                      
 
-
+                        
                     }).ToList();
 
             if (products.Count == 0)
