@@ -26,5 +26,6 @@ namespace SrbWeb.Models
         [Required]
         [DisplayName("Descrição")]
         public string CategoryDescription { get; set; }
+        public ICollection<Product>? Products { get; set; }
     }
 }
